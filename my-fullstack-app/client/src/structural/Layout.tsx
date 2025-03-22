@@ -10,7 +10,7 @@ function Layout() {
 
     return (
         <div>
-        <Navbar bg="dark" variant="dark" expand="lg" fixed="top" expanded={expanded} onToggle={(val) => setExpanded(val)}>
+        <Navbar bg="dark" variant="dark" expand="md" fixed="top" expanded={expanded} onToggle={(val) => setExpanded(val)}>
             <Container>
             <Navbar.Brand as={Link} to="/" onClick={handleNavClick}>MySite</Navbar.Brand>
             <Navbar.Toggle aria-controls="main-navbar-nav" />

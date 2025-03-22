@@ -5,6 +5,8 @@ import Login from '../components/Login';
 import Register from '../components/Register';
 import Logout from '../components/Logout';
 import Reviews from '../components/Reviews';
+import ReviewPage from '../components/ReviewsList/ReviewPage';
+
 
 function Routers() {
 
@@ -17,6 +19,8 @@ function Routers() {
           <Route path="/register" element={<Register />}></Route>
           <Route path="/logout" element={<Logout />}></Route>
           <Route path="/reviews" element={<Reviews />}></Route>
+
+          <Route path="reviews/reviewPage" element={<ReviewPage />}></Route>
           <Route path="*" element={<AboutPage />} />
         </Route>
       </Routes>
