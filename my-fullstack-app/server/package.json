@@ -1,12 +1,15 @@
 {
   "dependencies": {
-    "express": "^4.21.2"
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "pg": "^8.14.1"
   },
   "devDependencies": {
     "@types/node": "^22.13.11",
-    "ts-node-dev": "^2.0.0"
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.8.2"
   },
   "scripts": {
-  "dev": "ts-node-dev --respawn src/index.ts"
-}
+    "dev": "ts-node-dev --respawn src/server.ts"
+  }
 }
