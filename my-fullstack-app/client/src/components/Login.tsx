@@ -1,9 +1,15 @@
 import { Form, Button } from 'react-bootstrap';
-import { useRef, useState } from 'react';
+import { useRef, useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import userContext from '../context/userContext';
 
-function Login(props: any) {
+function Login() {
     const userIDref = useRef<HTMLInputElement>(null);
     const passwordRef = useRef<HTMLInputElement>(null);
+
+    const [_, setLoginStatus] = useContext(userContext);
+
+    const navigate = useNavigate();
     
     function handleLogIn() {
         const userID = userIDref.current?.value;
@@ -24,12 +30,21 @@ function Login(props: any) {
             }),
             credentials: 'include'
         })
-        .then(res => res.json()) // parse to JS object
+        .then(res => {
+            if (res.ok) {
+                return res.json();
+            }
+            else {
+                return res.json().then(data => { throw new Error(data.error) });
+            }
+        }) // parse to JS object
         .then(data => {
-            console.log(data);
+            alert(data.message);
+            setLoginStatus(true);
+            navigate("/");
         })
         .catch(error => {
-            console.error(`Failed to Log In! ${error}`);
+            alert(`Failed to Log In! ${error}`);
         })
     }
 
