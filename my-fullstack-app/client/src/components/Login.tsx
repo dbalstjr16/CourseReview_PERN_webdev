@@ -15,7 +15,7 @@ function Login(props: any) {
         }
 
         // send API request to backend
-        fetch("http://localhost:3000/users/register", {
+        fetch("http://localhost:3000/users/login", {
             method: "POST",
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

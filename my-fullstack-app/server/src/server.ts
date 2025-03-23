@@ -8,6 +8,8 @@ app.use(cors({
 }))
 app.use(express.json());
 require('dotenv').config();
+const cookieParser = require('cookie-parser');
+app.use(cookieParser());
 
 // ------ path: /users  ------ 
 const usersRouter = require('./routes/users');
