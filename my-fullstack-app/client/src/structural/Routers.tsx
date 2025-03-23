@@ -4,7 +4,7 @@ import Layout from './Layout';
 import Login from '../components/Login';
 import Register from '../components/Register';
 import Logout from '../components/Logout';
-import Reviews from '../components/Reviews';
+import SearchPage from '../components/SearchPage';
 import ReviewPage from '../components/ReviewsList/ReviewPage';
 
 function Routers() {
@@ -17,9 +17,9 @@ function Routers() {
           <Route path="/login" element={<Login />}></Route>
           <Route path="/register" element={<Register />}></Route>
           <Route path="/logout" element={<Logout />}></Route>
-          <Route path="/reviews" element={<Reviews />}></Route>
+          <Route path="/searchPage" element={<SearchPage />}></Route>
 
-          <Route path="reviews/reviewPage" element={<ReviewPage />}></Route>
+          <Route path="/comments/:uniName/:courseName" element={<ReviewPage />}></Route>
           <Route path="*" element={<AboutPage />} />
         </Route>
       </Routes>

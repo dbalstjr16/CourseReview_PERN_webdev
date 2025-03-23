@@ -1,7 +1,7 @@
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { Link, Outlet } from "react-router-dom";
-import { useState } from 'react';
-import userContext from '../context/userContext.ts';
+import { useState, useEffect } from 'react';
+import userContext from '../context/userContext';
 
 function Layout() {
 
@@ -9,6 +9,7 @@ function Layout() {
     const handleNavClick = () => setExpanded(false);
 
     const [loginStatus, setLoginStatus] = useState(false);
+
 
     return (
         <div>
@@ -22,7 +23,7 @@ function Layout() {
                 
                 {loginStatus ? (
                 <>
-                    <Nav.Link as={Link} to="/reviews" onClick={handleNavClick}>Reviews</Nav.Link>
+                    <Nav.Link as={Link} to="/searchPage" onClick={handleNavClick}>Reviews</Nav.Link>
                     <Nav.Link as={Link} to="/logout" onClick={handleNavClick}>Logout</Nav.Link>                
                 </>
                 ) : (

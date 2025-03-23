@@ -1,23 +1,59 @@
 import { Container, Button, Row, Col, Form } from 'react-bootstrap';
 import ReviewMessage from './ReviewMessage';
+import { useRef, useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 function ReviewPage() {
+
+    const { uniName, courseName } = useParams();
+    const [commentData, setCommentData] = useState<any>([]);
+
+    useEffect(() => {
+        if (!uniName || !courseName) return;
+
+        const decodedUni = decodeURIComponent(uniName);
+        const decodedCourse = decodeURIComponent(courseName);
+
+        // Now you can fetch course info and comments
+        fetch(`http://localhost:3000/comments/${decodedUni}/${decodedCourse}`, {
+            method: "GET",
+            credentials: "include"
+        })
+        .then(res => res.json())
+        .then(data => {
+            setCommentData(data);
+        });
+    }, [uniName, courseName]);
+    
+    const commentInput = useRef<any>(null);
+
+    // also post comment to database
+    function postComment() {
+        fetch("http://localhost:3000/comments/postcomment", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                content: commentInput.current.value
+            }),
+            credentials: 'include'
+        });
+    }
+
+    //fetch data of userID, courseID?, content, and pass it on to ReviewMessage
     return <>
-        <h3>Welcome to University of Wisconsin-Madison CS 537: Review Page!</h3>
+        <h3>Welcome to {uniName} {courseName}: Review Page!</h3>
 
         <Container>
-            <Form.Label>Comment</Form.Label>
-            <Form.Control></Form.Control>
-            <Button style={{marginTop: 10}}>Post Comment!</Button>
+            <Form.Label htmlFor='postcomment'>Post Comment!</Form.Label>
+            <Form.Control id='postcomment' ref={commentInput}></Form.Control>
+            <Button style={{marginTop: 10}} onClick={() => postComment()}>Post Comment!</Button>
         </Container>
 
         <Container fluid style={{marginTop: 25}}>
             <Row>
-                <Col sm={12} md={6} lg={3}><ReviewMessage /></Col>
-                <Col sm={12} md={6} lg={3}><ReviewMessage /></Col>
-                <Col sm={12} md={6} lg={3}><ReviewMessage /></Col>
-                <Col sm={12} md={6} lg={3}><ReviewMessage /></Col>
-                <Col sm={12} md={6} lg={3}><ReviewMessage /></Col>
+                {commentData?.map((comment: any) => <Col sm={12} md={6} lg={3}><ReviewMessage {...comment}/></Col>)}
             </Row>
         </Container>
     </>;

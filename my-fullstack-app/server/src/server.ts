@@ -15,6 +15,15 @@ app.use(cookieParser());
 const usersRouter = require('./routes/users');
 app.use('/users', usersRouter);
 
+// ------ path: /search  ------ 
+const searchRouter = require('./routes/search');
+app.use('/search', searchRouter);
+
+
+// ------ path: /comments  ------ 
+const commentsRouter = require('./routes/comments');
+app.use('/comments', commentsRouter);
+
 // ------ run server ------
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
