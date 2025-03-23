@@ -10,6 +10,18 @@ function Layout() {
 
     const [loginStatus, setLoginStatus] = useState(false);
 
+    // set Login Status to true, if token and cookie is still valid
+    useEffect(() => {
+        fetch('http://localhost:3000/users/me', {
+            method: "GET",
+            credentials: "include"
+        })
+        .then(res => res.json())
+        .then(data => {
+            setLoginStatus(data.isLoggedIn);
+        })
+        .catch(() => setLoginStatus(false)) 
+    }, []);
 
     return (
         <div>
