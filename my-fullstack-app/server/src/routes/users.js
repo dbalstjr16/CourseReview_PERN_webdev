@@ -78,16 +78,17 @@ usersRouter.post('/loginStatus', authorize, (req, res, next) => {
     res.status(200).json({ message: `You are still logged in as ${req.user.userID}!`});
 });
 
-// ------ testing (DELETE BEFORE DEPLOYMENT) ------
-usersRouter.get('/', async (req, res, next) => {
+// ------ Do I Still Have Cookie and JWT? ------
+usersRouter.get('/me', async (req, res, next) => {
+    const token = req.cookies.token;
+    if (!token) return res.status(401).json({ isLoggedIn: false });
+    
     try {
-        const result = await pool.query('SELECT * FROM users');
-        console.log(result);
-        res.json(result.rows);
+        const userID = jwt.verify(token, process.env.JWT_SECRET);
+        res.status(200).json({ isLoggedIn: true, userID});
     }
     catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'Database query failed' });
+        res.status(401).json({ isLoggedIn: false });
     }
 });
 
