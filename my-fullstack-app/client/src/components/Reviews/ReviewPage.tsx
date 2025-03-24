@@ -94,6 +94,29 @@ function ReviewPage() {
         .catch(error => alert(error));
     };
 
+    // ----- Delete Comment on to Review Page, Update Review Page -----
+    function deleteComment(commentID: number) {
+        fetch('http://localhost:3000/comments/deletecomment', {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                id: commentID
+            }),
+            credentials: "include"
+        })
+        .then(res => {
+            if (!res.ok) throw new Error('Failed To Delete Post');
+            else {return res.json()}
+        })
+        .then(data => {
+            alert(data.message);
+            fetchComments();
+        })
+        .catch(error => alert(error.message));
+    }
+
     return <>
         <h3>Welcome to {uniName} {courseName}: Review Page!</h3>
 
@@ -107,7 +130,7 @@ function ReviewPage() {
             <Row>
                 {commentData?.map((comment: CommentData) => 
                 <Col sm={12} md={6} lg={3} key={comment.id}>
-                    <ReviewMessage {...comment}/> 
+                    <ReviewMessage {...comment} deleteComment={deleteComment}/> 
                     </Col>)}
             </Row>
         </Container>

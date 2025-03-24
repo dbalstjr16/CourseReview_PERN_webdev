@@ -3,7 +3,7 @@ import userContext from '../../context/userContext';
 import { useNavigate } from 'react-router-dom';
 
 function Logout() {
-    const [_, setLoginStatus] = useContext(userContext)!;
+    const [_, setLoginStatus, __, setUserID] = useContext(userContext)!;
     
     const navigate = useNavigate();
 
@@ -24,6 +24,7 @@ function Logout() {
         .then(data => {
             alert(data.message);
             setLoginStatus(false);
+            setUserID(null);
             navigate("/");
         })
         .catch((error) => {

@@ -12,3 +12,18 @@
     - login, logout, register
 - fetch api of university names and course names!!!
     - for course search
+
+# March 24th
+so... there is no API for courses offered by a university, but
+there is API for getting all names of universities in U.S.
+
+Plan 1: Let user create courses inside university..
+    -Problem: 
+        - may generate random/bad courses that does not even exist
+        - multiple duplicates of same courses with different names may exist
+Plan 2: manually insert courses for course I already know..
+    -Problem:
+        - manullay inserting all is hard...i don't even know if how many classes exsit
+        - may need to update or delete courses later in the future
+    -Suggestions:
+        - should i just insert CS courses only... lol? not purpose of my project

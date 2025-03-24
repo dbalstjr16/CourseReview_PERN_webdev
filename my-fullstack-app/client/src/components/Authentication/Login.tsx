@@ -7,7 +7,7 @@ function Login() {
     const userIDref = useRef<HTMLInputElement>(null);
     const passwordRef = useRef<HTMLInputElement>(null);
 
-    const [_, setLoginStatus] = useContext(userContext)!;
+    const [_, setLoginStatus, __, setUserID] = useContext(userContext)!;
     
     const navigate = useNavigate();
     
@@ -41,6 +41,7 @@ function Login() {
         .then(data => {
             alert(data.message);
             setLoginStatus(true);
+            setUserID(userID);
             navigate("/");
         })
         .catch(error => {

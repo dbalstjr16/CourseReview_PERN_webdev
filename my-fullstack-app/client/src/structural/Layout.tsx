@@ -6,6 +6,8 @@ import userContext from '../context/userContext';
 function Layout() {
     // ------- Fetch Login Status -------
     const [loginStatus, setLoginStatus] = useState(false);
+    const [userID, setUserID] = useState<string | null>(null);
+
     useEffect(() => {
         fetch('http://localhost:3000/users/me', {
             method: "GET",
@@ -14,6 +16,7 @@ function Layout() {
         .then(res => res.json())
         .then(data => {
             setLoginStatus(data.isLoggedIn);
+            setUserID(data.userID.userID);
         })
         .catch(() => setLoginStatus(false)) 
     }, []);
@@ -51,7 +54,7 @@ function Layout() {
 
         {/* Push content below the fixed navbar */}
         <div style={{ marginTop: '80px' }}>
-            <userContext.Provider value={[loginStatus, setLoginStatus]}>
+            <userContext.Provider value={[loginStatus, setLoginStatus, userID, setUserID]}>
                 <Container>
                     <Outlet />
                 </Container>
