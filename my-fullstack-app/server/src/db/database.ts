@@ -1,5 +1,5 @@
 const { Pool } = require('pg');
-require('dotenv').config(); // to access .env file
+require('dotenv').config();
 
 const pool = new Pool ({
     host: process.env.DB_HOST,

@@ -2,6 +2,7 @@ const express = require('express');
 const searchRouter = express.Router();
 const pool = require('../db/database');
 
+// ------ Send List of University and Course Names ------
 searchRouter.get('/universityCourseName', async (req, res, next) => {
     const queryResult = await pool.query(
         `SELECT c.id, u.name AS uname, c.name AS cname 
@@ -11,6 +12,7 @@ searchRouter.get('/universityCourseName', async (req, res, next) => {
     res.status(200).send(queryResult.rows);
 });
 
+// ------ Send CourseID Based on Course Name ------
 searchRouter.get('/getCourseID/:courseName', async (req, res, next) => {
     const { courseName } = req.params;
 

@@ -1,3 +1,9 @@
 import { createContext } from 'react';
-const userContext = createContext<any>([]);
+
+type UserContextType = [
+    boolean, 
+    React.Dispatch<React.SetStateAction<boolean>>
+]
+const userContext = createContext<UserContextType | null>(null);
+
 export default userContext;

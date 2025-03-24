@@ -1,12 +1,13 @@
 import { useEffect, useContext } from 'react';
-import userContext from '../context/userContext';
+import userContext from '../../context/userContext';
 import { useNavigate } from 'react-router-dom';
 
 function Logout() {
+    const [_, setLoginStatus] = useContext(userContext)!;
     
-    const [_, setLoginStatus] = useContext(userContext);
     const navigate = useNavigate();
-    // ------ API request to LOGOUT ------
+
+    // ------------ Logout User ------------
     useEffect(() => {
         fetch("http://localhost:3000/users/logout", {
             method: "POST",

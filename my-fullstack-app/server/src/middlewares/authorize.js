@@ -7,7 +7,7 @@ const authorize = (req, res, next) => {
 
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET); // this outputs userID
-        req.user = decoded; // decoded is object (ex. {userID: 'user1'})
+        req.user = decoded; // decoded is object (ex. {userID: 'user1', ...})
         next();
     }
     catch (error) {

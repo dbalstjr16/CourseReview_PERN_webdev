@@ -8,12 +8,12 @@ type universityData = {
     cname: string
 };
 
-function SearchPage(props: any) {
+function SearchPage() {
     
     // ----- Store Data -----
-    const [universityCourseList, setUniversityCourseList] = useState<[universityData]>();
+    const [universityCourseList, setUniversityCourseList] = useState<universityData[]>([]);
 
-    //fetch data of university names and courses:
+    // ----- Fetch and Store List of University and Course Names -----
     useEffect(() => {
         fetch('http://localhost:3000/search/universityCourseName', {
             method: "GET",
@@ -29,6 +29,7 @@ function SearchPage(props: any) {
     const [universityInput, setUniversity] = useState<string>("");
     const [courseInput, setCourse] = useState<string>("");
 
+    // ----- Filter UniversityCourseList Based on Search Inputs -----
     const filterdUniCourseList = universityCourseList?.filter(uData => 
         uData.uname.toLowerCase().includes(universityInput.toLowerCase()) && uData.cname.toLowerCase().includes(courseInput.toLowerCase()));
 

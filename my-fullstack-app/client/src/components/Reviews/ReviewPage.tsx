@@ -14,12 +14,14 @@ type CommentData = {
 }
 
 function ReviewPage() {
-
     const { uniName, courseName } = useParams();
-    const [commentData, setCommentData] = useState<CommentData[]>([]);
     const [userID, setUserID] = useState<string>("");
-    const commentInput = useRef<any>(null);
+    const [courseId, setCourseId] = useState<number | null>(null);
+    const [commentData, setCommentData] = useState<CommentData[]>([]);
 
+    const commentInput = useRef<HTMLInputElement>(null);
+
+    // ----- Get UserID -----
     useEffect(() => {
         fetch('http://localhost:3000/users/me', {
             method: "GET",
@@ -30,8 +32,7 @@ function ReviewPage() {
         .catch(error => console.error(`Error fetching userID: ${error}`))
     }, [])
 
-    //fetch course id
-    const [courseId, setCourseId] = useState<number | null>(null);
+    // ----- Get CourseID -----
     useEffect(() => {
         fetch(`http://localhost:3000/search/getCourseID/${courseName}`, {
             method: "GET",
@@ -45,13 +46,13 @@ function ReviewPage() {
         .catch(error => alert(error));
     }, []);
 
+    // ----- Function to Retrieve List of Comments -----
     function fetchComments() {
         if (!uniName || !courseName) return;
 
         const decodedUni = decodeURIComponent(uniName);
         const decodedCourse = decodeURIComponent(courseName);
 
-        // Now you can fetch course info and comments
         fetch(`http://localhost:3000/comments/${decodedUni}/${decodedCourse}`, {
             method: "GET",
             credentials: "include"
@@ -62,10 +63,12 @@ function ReviewPage() {
         });
     }
 
+    // ----- Get List of Comments -----
     useEffect(() => {
         fetchComments();
     }, [uniName, courseName]);
     
+    // ----- Post Comment on to Review Page, Update Review Page -----
     function postComment() {
         fetch("http://localhost:3000/comments/postcomment", {
             method: "POST",
@@ -75,7 +78,7 @@ function ReviewPage() {
             body: JSON.stringify({
                 userid: userID,
                 courseid: courseId,
-                content: commentInput.current.value
+                content: commentInput.current!.value
             }),
             credentials: 'include'
         })
@@ -85,7 +88,7 @@ function ReviewPage() {
         })
         .then(data => {
             alert(data.message);
-            commentInput.current.value = "";
+            commentInput.current!.value = "";
             fetchComments();
         })
         .catch(error => alert(error));
@@ -110,5 +113,5 @@ function ReviewPage() {
         </Container>
     </>;
 }
-//delete comment needed!
+
 export default ReviewPage;

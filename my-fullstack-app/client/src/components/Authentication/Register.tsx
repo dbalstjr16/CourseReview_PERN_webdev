@@ -3,17 +3,16 @@ import { useRef } from 'react';
 import { useNavigate  } from 'react-router-dom';
 
 function Register() {
-    
-    const userIDRef = useRef<any>(null)
-    const passwordRef = useRef<any>(null);
-    const cPasswordRef = useRef<any>(null);
-
+    const userIDRef = useRef<HTMLInputElement>(null)!;
+    const passwordRef = useRef<HTMLInputElement>(null);
+    const cPasswordRef = useRef<HTMLInputElement>(null);
     const navigate = useNavigate();
 
+    // -------------- Register User --------------
     function handleRegister() {
-        const userID = userIDRef.current.value;
-        const password = passwordRef.current.value;
-        const cPassword = cPasswordRef.current.value;
+        const userID = userIDRef.current!.value;
+        const password = passwordRef.current!.value;
+        const cPassword = cPasswordRef.current!.value;
 
         if (!userID || !password || !cPassword) {
             alert('All Fields should not be empty!');

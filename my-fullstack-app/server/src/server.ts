@@ -1,4 +1,4 @@
-// ------ import and setup ------
+// ------ Import and Setup ------
 const express = require('express');
 const app = express();
 const cors = require('cors');
@@ -24,7 +24,7 @@ app.use('/search', searchRouter);
 const commentsRouter = require('./routes/comments');
 app.use('/comments', commentsRouter);
 
-// ------ run server ------
+// ------ Run Server ------
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server Running at Port:${PORT}`);

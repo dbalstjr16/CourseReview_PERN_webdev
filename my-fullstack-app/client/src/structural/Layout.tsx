@@ -4,13 +4,8 @@ import { useState, useEffect } from 'react';
 import userContext from '../context/userContext';
 
 function Layout() {
-
-    const [expanded, setExpanded] = useState(false);
-    const handleNavClick = () => setExpanded(false);
-
+    // ------- Fetch Login Status -------
     const [loginStatus, setLoginStatus] = useState(false);
-
-    // set Login Status to true, if token and cookie is still valid
     useEffect(() => {
         fetch('http://localhost:3000/users/me', {
             method: "GET",
@@ -22,6 +17,10 @@ function Layout() {
         })
         .catch(() => setLoginStatus(false)) 
     }, []);
+
+    // ------- Handle Navbar Animation -------
+    const [expanded, setExpanded] = useState(false);
+    const handleNavClick = () => setExpanded(false);
 
     return (
         <div>
