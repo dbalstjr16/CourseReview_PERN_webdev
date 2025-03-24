@@ -32,7 +32,7 @@ usersRouter.post('/login', async (req, res, next) => {
 
     try {
         // compare password with already existing
-        passwordTable = await pool.query("SELECT password FROM users WHERE userID = $1", [userID]);
+        const passwordTable = await pool.query("SELECT password FROM users WHERE userID = $1", [userID]);
 
         if (passwordTable.rows.length === 0) {
             return res.status(401).json({ error: "invalid userID or password "});
