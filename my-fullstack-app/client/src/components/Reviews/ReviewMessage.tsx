@@ -1,5 +1,5 @@
 import { Card, Button } from 'react-bootstrap';
-import { useState, useContext } from 'react';
+import { useContext } from 'react';
 import userContext from '../../context/userContext';
 
 function ReviewMessage(props: any) {

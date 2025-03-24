@@ -1,9 +1,9 @@
-import { useContext, useState, useEffect } from 'react';
+import { useContext } from 'react';
 import userContext from '../context/userContext';
 
 function AboutPage() {
     
-    const [loginStatus, unused1, userID, unused2] = useContext(userContext)!;
+    const [loginStatus, _, userID, __] = useContext(userContext)!;
 
     return <>
         {loginStatus ? 
