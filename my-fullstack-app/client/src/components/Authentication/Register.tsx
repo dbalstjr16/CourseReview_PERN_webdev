@@ -3,6 +3,8 @@ import { useRef } from 'react';
 import { useNavigate  } from 'react-router-dom';
 
 function Register() {
+    const domain = `${import.meta.env.VITE_API_BASE_URL}`;
+
     const userIDRef = useRef<HTMLInputElement>(null)!;
     const passwordRef = useRef<HTMLInputElement>(null);
     const cPasswordRef = useRef<HTMLInputElement>(null);
@@ -23,7 +25,7 @@ function Register() {
             return;
         }
 
-        fetch("http://localhost:3000/users/register", {
+        fetch(`${domain}/users/register`, {
             method: "POST",
             headers: {
                 "Content-Type" : "application/json"

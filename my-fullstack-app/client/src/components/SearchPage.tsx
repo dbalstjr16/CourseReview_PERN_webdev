@@ -9,13 +9,13 @@ type universityData = {
 };
 
 function SearchPage() {
-    
+    const domain = `${import.meta.env.VITE_API_BASE_URL}`;
     // ----- Store Data -----
     const [universityCourseList, setUniversityCourseList] = useState<universityData[]>([]);
 
     // ----- Fetch and Store List of University and Course Names -----
     useEffect(() => {
-        fetch('http://localhost:3000/search/universityCourseName', {
+        fetch(`${domain}/search/universityCourseName`, {
             method: "GET",
             credentials: "include"
         })

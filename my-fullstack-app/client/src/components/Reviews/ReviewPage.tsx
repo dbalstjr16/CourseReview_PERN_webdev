@@ -14,6 +14,8 @@ type CommentData = {
 }
 
 function ReviewPage() {
+    const domain = `${import.meta.env.VITE_API_BASE_URL}`;
+
     const { uniName, courseName } = useParams();
     const [userID, setUserID] = useState<string>("");
     const [courseId, setCourseId] = useState<number | null>(null);
@@ -23,7 +25,7 @@ function ReviewPage() {
 
     // ----- Get UserID -----
     useEffect(() => {
-        fetch('http://localhost:3000/users/me', {
+        fetch(`${domain}/users/me`, {
             method: "GET",
             credentials: "include"
         })
@@ -34,7 +36,7 @@ function ReviewPage() {
 
     // ----- Get CourseID -----
     useEffect(() => {
-        fetch(`http://localhost:3000/search/getCourseID/${courseName}`, {
+        fetch(`${domain}/search/getCourseID/${courseName}`, {
             method: "GET",
             credentials: "include"
         })
@@ -53,7 +55,7 @@ function ReviewPage() {
         const decodedUni = decodeURIComponent(uniName);
         const decodedCourse = decodeURIComponent(courseName);
 
-        fetch(`http://localhost:3000/comments/${decodedUni}/${decodedCourse}`, {
+        fetch(`${domain}/comments/${decodedUni}/${decodedCourse}`, {
             method: "GET",
             credentials: "include"
         })
@@ -70,7 +72,7 @@ function ReviewPage() {
     
     // ----- Post Comment on to Review Page, Update Review Page -----
     function postComment() {
-        fetch("http://localhost:3000/comments/postcomment", {
+        fetch(`${domain}/comments/postcomment`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -96,7 +98,7 @@ function ReviewPage() {
 
     // ----- Delete Comment on to Review Page, Update Review Page -----
     function deleteComment(commentID: number) {
-        fetch('http://localhost:3000/comments/deletecomment', {
+        fetch(`${domain}/comments/deletecomment`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json"
