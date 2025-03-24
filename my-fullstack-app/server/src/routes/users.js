@@ -78,7 +78,7 @@ usersRouter.post('/loginStatus', authorize, (req, res, next) => {
     res.status(200).json({ message: `You are still logged in as ${req.user.userID}!`});
 });
 
-// ------ Do I Still Have Cookie and JWT? ------
+// ------ Do I Still Have Cookie and JWT? WHO AM I? ------
 usersRouter.get('/me', async (req, res, next) => {
     const token = req.cookies.token;
     if (!token) return res.status(401).json({ isLoggedIn: false });

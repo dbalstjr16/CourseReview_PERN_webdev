@@ -18,7 +18,16 @@ commentsRouter.get('/:uniName/:courseName', async (req, res, next) => {
 });
 
 commentsRouter.post('/postcomment', async (req, res, next) => {
-
+    const { userid, courseid, content } = req.body; 
+    
+    try {
+        await pool.query(`INSERT INTO comments (userid, courseid, content) 
+            VALUES ($1, $2, $3)`, [userid, courseid, content]);
+        return res.status(200).json({ message: 'Successfully posted comment!' });
+    }
+    catch (error) {
+        return res.status(400).json({ error: `Error posting comment` });
+    }
 });
 
 
