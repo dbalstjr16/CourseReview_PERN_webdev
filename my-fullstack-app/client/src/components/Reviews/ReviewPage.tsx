@@ -1,7 +1,8 @@
 import { Container, Button, Row, Col, Form } from 'react-bootstrap';
 import ReviewMessage from './ReviewMessage';
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import userContext from '../../context/userContext';
 
 type CommentData = {
     id: number,
@@ -15,22 +16,13 @@ type CommentData = {
 
 function ReviewPage() {
     const { uniName, courseName } = useParams();
-    const [userID, setUserID] = useState<string>("");
+    const [___, _, userID, __] = useContext(userContext)!;
     const [courseId, setCourseId] = useState<number | null>(null);
     const [commentData, setCommentData] = useState<CommentData[]>([]);
 
     const commentInput = useRef<HTMLInputElement>(null);
 
     // ----- Get UserID -----
-    useEffect(() => {
-        fetch('http://localhost:3000/users/me', {
-            method: "GET",
-            credentials: "include"
-        })
-        .then(res => res.json())
-        .then(data => setUserID(data.userID.userID))
-        .catch(error => console.error(`Error fetching userID: ${error}`))
-    }, [])
 
     // ----- Get CourseID -----
     useEffect(() => {
