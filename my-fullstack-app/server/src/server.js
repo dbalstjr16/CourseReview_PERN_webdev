@@ -9,7 +9,8 @@ const allowedOrigins = [
   ];
 app.use(cors({
     origin: allowedOrigins,
-    credentials: true
+    credentials: true,
+    exposedHeaders: ['set-cookie']
 }))
 app.use(express.json());
 require('dotenv').config();

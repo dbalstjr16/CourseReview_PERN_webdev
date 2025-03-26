@@ -69,6 +69,7 @@ usersRouter.post('/logout', (req, res, next) => {
         httpOnly: true,
         secure: true,
         sameSite: "none",
+        domain: '.onrender.com',
     });
     res.status(200).json({ message: "Successfully logged out! "});
 });
