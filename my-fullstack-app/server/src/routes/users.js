@@ -52,7 +52,8 @@ usersRouter.post('/login', async (req, res, next) => {
             httpOnly: true,
             secure: true,
             sameSite: "LAX",    // protection against CSRF
-            maxAge: 3600000
+            maxAge: 3600000,
+            domain: '.onrender.com'
         });
 
         res.status(200).json({ message: "Successfully logged in!"});
