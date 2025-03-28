@@ -1,4 +1,4 @@
-# 🎓 CourseReview – Student-Powered Course Feedback Platform
+# 🎓 CourseReview – For College Students: Course Review/Feedback Platform
 
 A full-stack web application where students can browse and post reviews about courses from colleges across the U.S. Users can register, leave feedback on courses they've taken, and view insights shared by others.
 
@@ -10,11 +10,10 @@ A full-stack web application where students can browse and post reviews about co
 
 - [Overview](#overview)
 - [Main Features](#main-features)
+- [Planned Features](#planned-features)
 - [Screenshots](#screenshots)
 - [Tech Stack](#tech-stack)
 - [Setup](#setup)
-- [Planned Features](#planned-features)
-- [Challenges & Learnings](#challenges--learnings)
 
 ---
 
@@ -39,7 +38,7 @@ This project aims to create a space for students to share honest feedback about 
 
 ---
 
-## 🧪 Additional Features (Planned)
+## 🧪 Planned Features
 
 - Course creation and management UI
 - Admin/moderator role to manage duplicate or invalid courses
