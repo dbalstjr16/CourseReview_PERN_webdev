@@ -23,12 +23,15 @@ usersRouter.post('/register', async (req, res, next) => {
     await pool.query(`INSERT INTO users (userID, password) VALUES ($1, $2)`, 
         [userID, hashedPassword]
     );
-    res.status(200).json({message: "Successfully registered!"});
+    res.status(201).json({message: "Successfully registered!"});
 });
 
 // ------ LOGIN ------
 usersRouter.post('/login', async (req, res, next) => {
     const {userID, password} = req.body;
+
+    const doesUserExist = await pool.query(`SELECT userid FROM users WHERE userid = $1`, [userID]);
+    if (doesUserExist.rows.length === 0) return res.status(404).json({ error: "User not found" }); 
 
     try {
         // compare password with already existing
@@ -58,7 +61,6 @@ usersRouter.post('/login', async (req, res, next) => {
         res.status(200).json({ message: "Successfully logged in!"});
     }
     catch (error) {
-        console.log(`Login Error: ${error}`);
         res.status(500).json({ error: "Server error during login." });
     }
 });

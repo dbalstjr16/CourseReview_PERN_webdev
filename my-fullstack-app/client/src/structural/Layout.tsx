@@ -29,7 +29,7 @@ function Layout() {
         <div>
         <Navbar bg="dark" variant="dark" expand="md" fixed="top" expanded={expanded} onToggle={(val) => setExpanded(val)}>
             <Container>
-            <Navbar.Brand as={Link} to="/" onClick={handleNavClick}>MySite</Navbar.Brand>
+            <Navbar.Brand as={Link} to="/" onClick={handleNavClick}>CourseReview</Navbar.Brand>
             <Navbar.Toggle aria-controls="main-navbar-nav" />
             <Navbar.Collapse id="main-navbar-nav">
                 <Nav className="me-auto">

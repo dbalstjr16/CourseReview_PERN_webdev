@@ -22,8 +22,6 @@ function ReviewPage() {
 
     const commentInput = useRef<HTMLInputElement>(null);
 
-    // ----- Get UserID -----
-
     // ----- Get CourseID -----
     useEffect(() => {
         fetch(`http://localhost:3000/search/getCourseID/${courseName}`, {
@@ -62,6 +60,10 @@ function ReviewPage() {
     
     // ----- Post Comment on to Review Page, Update Review Page -----
     function postComment() {
+        if (commentInput.current?.value == "") {
+            alert('Empty post is not allowed!');
+            return;
+        }
         fetch("http://localhost:3000/comments/postcomment", {
             method: "POST",
             headers: {

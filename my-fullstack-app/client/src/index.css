@@ -1,0 +1,23 @@
+.custom-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    text-align: center;
+    transition: color 0.2s ease;
+  }
+  
+  .custom-link:hover {
+    color: #007bff; /* or any color you want */
+    cursor: pointer;
+  }
+  
+  .hover-card {
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .hover-card:hover {
+    background-color: #f0f8ff; /* light blue, or any color */
+    color: #000; /* text color */
+    cursor: pointer;
+  }
+  
