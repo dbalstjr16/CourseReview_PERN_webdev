@@ -1,7 +1,5 @@
 import { Form } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { Card, Row, Container, Col, Pagination } from 'react-bootstrap';
 import SearchResult from './SearchResult';
 
 type universityData = {
