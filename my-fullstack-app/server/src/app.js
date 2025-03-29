@@ -2,9 +2,15 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
+
+const allowedOrigins = [
+    'https://pern-webdev.onrender.com',   
+    'http://localhost:5173'               
+  ];
 app.use(cors({
-    origin: 'http://localhost:5173',
-    credentials: true
+    origin: allowedOrigins,
+    credentials: true,
+    exposedHeaders: ['set-cookie']
 }))
 app.use(express.json());
 require('dotenv').config();
