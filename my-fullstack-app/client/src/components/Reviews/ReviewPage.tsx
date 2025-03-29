@@ -24,8 +24,6 @@ function ReviewPage() {
 
     const commentInput = useRef<HTMLInputElement>(null);
 
-    // ----- Get UserID -----
-
     // ----- Get CourseID -----
     useEffect(() => {
         fetch(`${domain}/search/getCourseID/${courseName}`, {

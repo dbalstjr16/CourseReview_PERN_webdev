@@ -39,7 +39,7 @@ commentsRouter.delete('/deletecomment', async (req, res, next) => {
     try {
         await pool.query(`DELETE FROM comments
             WHERE id = $1`, [id]);
-        return res.status(200).json({ message: 'Successfully deleted comment!' });
+        return res.status(200).json({ message: "Successfully deleted comment!" });
     }
     catch (error) {
         return res.status(500).json({ error: `Error deleting comment` });
