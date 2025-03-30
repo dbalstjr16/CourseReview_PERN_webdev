@@ -2,18 +2,14 @@ version: '3.8'
 
 services:
   client:
-    build: ./client
+    build:
+      context: ./client
+      args:
+        VITE_API_BASE_URL: http://backend:3000
     ports:
-      - "5173:5173"  # or whatever Vite uses
+      - "80:80"
     depends_on:
       - backend
-    environment:
-      - VITE_API_URL=http://localhost:3000  # Or adjust to proxy setup
-    volumes:
-      - ./client:/app
-      - /app/node_modules
-    stdin_open: true
-    tty: true
 
   backend:
     build: ./server
@@ -25,9 +21,6 @@ services:
       - .env
     environment:
       - DB_HOST=db
-    volumes:
-      - ./server:/app
-      - /app/node_modules
 
   db:
     image: postgres:15
