@@ -3,15 +3,13 @@ import userContext from '../../context/userContext';
 import { useNavigate } from 'react-router-dom';
 
 function Logout() {
-    const domain = `${import.meta.env.VITE_API_BASE_URL}`;
-
     const [_, setLoginStatus, __, setUserID] = useContext(userContext)!;
     
     const navigate = useNavigate();
 
     // ------------ Logout User ------------
     useEffect(() => {
-        fetch(`${domain}/users/logout`, {
+        fetch(`/api/users/logout`, {
             method: "POST",
             credentials: "include"
         })

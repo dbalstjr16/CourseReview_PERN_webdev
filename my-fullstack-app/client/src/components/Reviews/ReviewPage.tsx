@@ -15,8 +15,6 @@ type CommentData = {
 }
 
 function ReviewPage() {
-    const domain = `${import.meta.env.VITE_API_BASE_URL}`;
-
     const { uniName, courseName } = useParams();
     const [___, _, userID, __] = useContext(userContext)!;
     const [courseId, setCourseId] = useState<number | null>(null);
@@ -26,7 +24,7 @@ function ReviewPage() {
 
     // ----- Get CourseID -----
     useEffect(() => {
-        fetch(`${domain}/search/getCourseID/${courseName}`, {
+        fetch(`/api/search/getCourseID/${courseName}`, {
             method: "GET",
             credentials: "include"
         })
@@ -45,7 +43,7 @@ function ReviewPage() {
         const decodedUni = decodeURIComponent(uniName);
         const decodedCourse = decodeURIComponent(courseName);
 
-        fetch(`${domain}/comments/${decodedUni}/${decodedCourse}`, {
+        fetch(`/api/comments/${decodedUni}/${decodedCourse}`, {
             method: "GET",
             credentials: "include"
         })
@@ -66,7 +64,7 @@ function ReviewPage() {
             alert('Empty post is not allowed!');
             return;
         }
-        fetch(`${domain}/comments/postcomment`, {
+        fetch(`/api/comments/postcomment`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -92,7 +90,7 @@ function ReviewPage() {
 
     // ----- Delete Comment on to Review Page, Update Review Page -----
     function deleteComment(commentID: number) {
-        fetch(`${domain}/comments/deletecomment`, {
+        fetch(`/api/comments/deletecomment`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json"

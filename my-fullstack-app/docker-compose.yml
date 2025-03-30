@@ -36,3 +36,6 @@ services:
 
 volumes:
   pgdata:
+    external: true
+    name: my-fullstack-app_pgdata
+

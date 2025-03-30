@@ -4,8 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import userContext from '../../context/userContext';
 
 function Login() {
-    const domain = `${import.meta.env.VITE_API_BASE_URL}`;
-
     const userIDref = useRef<HTMLInputElement>(null);
     const passwordRef = useRef<HTMLInputElement>(null);
 
@@ -23,7 +21,7 @@ function Login() {
             return;
         }
 
-        fetch(`${domain}/users/login`, {
+        fetch(`/api/users/login`, {
             method: "POST",
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

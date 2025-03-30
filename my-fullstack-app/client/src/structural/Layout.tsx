@@ -4,13 +4,12 @@ import { useState, useEffect } from 'react';
 import userContext from '../context/userContext';
 
 function Layout() {
-    const domain = `${import.meta.env.VITE_API_BASE_URL}`;
     // ------- Fetch Login Status -------
     const [loginStatus, setLoginStatus] = useState(false);
     const [userID, setUserID] = useState<string | null>(null);
 
     useEffect(() => {
-        fetch(`${domain}/users/me`, {
+        fetch(`/api/users/me`, {
             method: "GET",
             credentials: "include"
         })
