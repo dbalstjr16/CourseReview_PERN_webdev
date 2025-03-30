@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import userContext from '../../context/userContext';
 
 function Login() {
-    const domain = `${import.meta.env.VITE_API_BASE_URL}`;
+    const domain = import.meta.env.VITE_API_BASE_URL;
 
     const userIDref = useRef<HTMLInputElement>(null);
     const passwordRef = useRef<HTMLInputElement>(null);

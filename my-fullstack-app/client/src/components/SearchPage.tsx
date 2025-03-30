@@ -9,7 +9,7 @@ type universityData = {
 };
 
 function SearchPage() {
-    const domain = `${import.meta.env.VITE_API_BASE_URL}`;
+    const domain = import.meta.env.VITE_API_BASE_URL;
     // ----- Store Data -----
     const [universityCourseList, setUniversityCourseList] = useState<universityData[]>([]);
 

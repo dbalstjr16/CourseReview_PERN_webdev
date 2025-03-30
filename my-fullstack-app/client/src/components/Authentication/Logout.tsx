@@ -3,7 +3,7 @@ import userContext from '../../context/userContext';
 import { useNavigate } from 'react-router-dom';
 
 function Logout() {
-    const domain = `${import.meta.env.VITE_API_BASE_URL}`;
+    const domain = import.meta.env.VITE_API_BASE_URL;
 
     const [_, setLoginStatus, __, setUserID] = useContext(userContext)!;
     
