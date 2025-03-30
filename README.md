@@ -130,3 +130,62 @@ npm install
 # Install backend dependencies (bcrypt, cookie-parser, cors, dotenv, express, jsonwebtoken, pg)
 cd ../server
 npm install
+```
+
+---
+
+## 🐳 Docker Support (Optional Testing Branches)
+
+If you'd like to test or run this project using Docker instead of setting everything up manually, you can check out the following feature branches:
+
+### 🔀 `feature/docker`
+
+This branch provides a basic Docker setup for local development:
+
+- Includes `Dockerfile` and `docker-compose.yml`
+- Spins up both the client and server containers
+- Connects to a local PostgreSQL container
+
+**How to try it:**
+
+```bash
+git checkout feature/docker
+cd my-fullstack-app
+docker-compose up --build
+```
+---
+
+### 🚀 `feature/deployWithDocker`
+
+This branch includes **production-ready Docker configurations** for deploying the app in a containerized environment:
+
+- Uses **multi-stage builds** in the `Dockerfile` to reduce image size
+- Includes `docker-compose.yml` for orchestrating containers in production
+- Serves the frontend with **Nginx**
+- Prepares backend and database services for deployment
+
+**How to try it:**
+
+```bash
+git checkout feature/deployWithDocker
+cd my-fullstack-app
+docker-compose --build
+```
+
+#### 🛠️ Environment Setup For Both 🔀 `feature/docker` and 🚀 `feature/deployWithDocker`
+
+You must create a `.env` file in the **same directory** as `docker-compose.yml`.  
+This file will be used to pass environment variables into the backend container.
+
+**Example `.env` file:**
+
+```env
+# PostgreSQL Configuration
+DB_HOST=db
+DB_USER=your_db_username
+DB_PASSWORD=your_db_password
+DB_NAME=your_db_name
+DB_PORT=5432
+
+# JWT Secret Key
+JWT_SECRET=your_jwt_secret_key
