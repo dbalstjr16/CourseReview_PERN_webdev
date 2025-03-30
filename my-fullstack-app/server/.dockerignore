@@ -1,0 +1,4 @@
+covergae
+node_modules
+.env
+.env.test

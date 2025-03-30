@@ -62,6 +62,10 @@ function ReviewPage() {
 
     // ----- Post Comment on to Review Page, Update Review Page -----
     function postComment() {
+        if (commentInput.current?.value == "") {
+            alert('Empty post is not allowed!');
+            return;
+        }
         fetch(`${domain}/comments/postcomment`, {
             method: "POST",
             headers: {
