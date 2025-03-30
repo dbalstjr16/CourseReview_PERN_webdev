@@ -40,6 +40,8 @@ This project aims to create a space for students to share honest feedback about 
 
 ## 🧪 Planned Features
 
+- 🚫 Currently, universities and courses are added manually because there is no external API available for fetching course data per university.
+  - ➡️ This is a major limitation I'm actively thinking about...
 - Course creation and management UI
 - Admin/moderator role to manage duplicate or invalid courses
 - Profile Page
@@ -51,13 +53,13 @@ This project aims to create a space for students to share honest feedback about 
 ## 🖼️ Screenshots
 
 <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-  <img src="./assets/About.png" alt="About" width="300"/>
-  <img src="./assets/Search.png" alt="Search" width="300"/>
-  <img src="./assets/Review.png" alt="Review" width="300"/>
-  <img src="./assets/About2.png" alt="Review" width="300"/>
-  <img src="./assets/Review2.png" alt="Review" width="300"/>
-  <img src="./assets/Register.png" alt="Register" width="300"/>
-  <img src="./assets/Login.png" alt="Login" width="300"/>
+  <img src="./assets/About.png" alt="About" width="600"/>
+  <img src="./assets/Search.png" alt="Search" width="600"/>
+  <img src="./assets/Review.png" alt="Review" width="600"/>
+  <img src="./assets/About2.png" alt="Review" width="600"/>
+  <img src="./assets/Review2.png" alt="Review" width="600"/>
+  <img src="./assets/Register.png" alt="Register" width="600"/>
+  <img src="./assets/Login.png" alt="Login" width="600"/>
 </div>
 
 ---
