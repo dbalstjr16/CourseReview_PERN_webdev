@@ -13,9 +13,7 @@ function AboutPage() {
             <Card.Body>
               <h2 className="mb-3 text-center">About This Platform</h2>
               <p>
-                This web application allows students to browse and review university courses.
-                Users can search by university and course name, read comments from peers, and
-                leave feedback on classes they've taken.
+              This web application enables university students to explore and review academic courses. Users can search by university and course title, read insights shared by fellow students, and contribute their own feedback based on personal experience.
               </p>
 
               <p>
@@ -36,7 +34,7 @@ function AboutPage() {
               <hr />
 
               <p className="text-muted text-center" style={{ fontSize: "0.9rem" }}>
-                Built with ❤️ by Minsuk You.
+                Built by Minsuk You. Contact: dbalstjr16@gmail.com
               </p>
             </Card.Body>
           </Card>

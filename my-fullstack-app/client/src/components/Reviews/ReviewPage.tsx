@@ -30,12 +30,12 @@ function ReviewPage() {
             method: "GET",
             credentials: "include"
         })
-        .then(res => {
-            if (res.ok) return res.json();
-            else {return res.json().then((data) => {throw new Error(data.error)})};
-        })
-        .then(data => {setCourseId(data.id)})
-        .catch(error => alert(error));
+            .then(res => {
+                if (res.ok) return res.json();
+                else { return res.json().then((data) => { throw new Error(data.error) }) };
+            })
+            .then(data => { setCourseId(data.id) })
+            .catch(error => alert(error));
     }, []);
 
     // ----- Function to Retrieve List of Comments -----
@@ -49,17 +49,17 @@ function ReviewPage() {
             method: "GET",
             credentials: "include"
         })
-        .then(res => res.json())
-        .then(data => {
-            setCommentData(data);
-        });
+            .then(res => res.json())
+            .then(data => {
+                setCommentData(data);
+            });
     }
 
     // ----- Get List of Comments -----
     useEffect(() => {
         fetchComments();
     }, [uniName, courseName]);
-    
+
     // ----- Post Comment on to Review Page, Update Review Page -----
     function postComment() {
         fetch(`${domain}/comments/postcomment`, {
@@ -74,16 +74,16 @@ function ReviewPage() {
             }),
             credentials: 'include'
         })
-        .then(res => {
-            if (res.ok) return res.json();
-            else return res.json().then(data => {throw new Error(data.error)} );
-        })
-        .then(data => {
-            alert(data.message);
-            commentInput.current!.value = "";
-            fetchComments();
-        })
-        .catch(error => alert(error));
+            .then(res => {
+                if (res.ok) return res.json();
+                else return res.json().then(data => { throw new Error(data.error) });
+            })
+            .then(data => {
+                alert(data.message);
+                commentInput.current!.value = "";
+                fetchComments();
+            })
+            .catch(error => alert(error));
     };
 
     // ----- Delete Comment on to Review Page, Update Review Page -----
@@ -98,15 +98,15 @@ function ReviewPage() {
             }),
             credentials: "include"
         })
-        .then(res => {
-            if (!res.ok) throw new Error('Failed To Delete Post');
-            else {return res.json()}
-        })
-        .then(data => {
-            alert(data.message);
-            fetchComments();
-        })
-        .catch(error => alert(error.message));
+            .then(res => {
+                if (!res.ok) throw new Error('Failed To Delete Post');
+                else { return res.json() }
+            })
+            .then(data => {
+                alert(data.message);
+                fetchComments();
+            })
+            .catch(error => alert(error.message));
     }
 
     return <>
@@ -115,17 +115,22 @@ function ReviewPage() {
         <Container>
             <Form.Label htmlFor='postcomment'>Post Comment!</Form.Label>
             <Form.Control id='postcomment' ref={commentInput}></Form.Control>
-            <Button style={{marginTop: 10}} onClick={() => postComment()}>Post Comment!</Button>
+            <Button style={{ marginTop: 10 }} onClick={() => postComment()}>Post Comment!</Button>
         </Container>
 
-        <Container fluid style={{marginTop: 25}}>
-            <Row>
-                {commentData?.map((comment: CommentData) => 
-                <Col sm={12} md={6} lg={3} key={comment.id}>
-                    <ReviewMessage {...comment} deleteComment={deleteComment}/> 
-                    </Col>)}
-            </Row>
-        </Container>
+        {commentData.length !== 0 ?
+            <Container fluid style={{ marginTop: 25 }}>
+                <Row>
+                    {commentData?.map((comment: CommentData) =>
+                        <Col sm={12} md={6} lg={3} key={comment.id}>
+                            <ReviewMessage {...comment} deleteComment={deleteComment} />
+                        </Col>)}
+                </Row>
+            </Container>
+            :
+            <p style={{marginTop: 30}}>No comments have been added to this course yet. Be the first to share your thoughts! 😊</p>
+        }
+
     </>;
 }
 
