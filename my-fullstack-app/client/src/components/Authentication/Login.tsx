@@ -51,14 +51,39 @@ function Login() {
         })
     }
 
-    return <>
-        <h3>Login Page</h3>
-        <Form.Label htmlFor="userIDInput">userID</Form.Label>
-        <Form.Control id="userIDInput" ref={userIDref}></Form.Control>
-        <Form.Label htmlFor="passwordInput">Password</Form.Label>
-        <Form.Control id="passwordInput" type="password" ref={passwordRef}></Form.Control>
-        <Button style={{marginTop: 10}} onClick={() => handleLogIn()}>Log In</Button>
-    </>;
+    return (
+        <div className="container mt-5">
+          <div className="row justify-content-center">
+            <div className="col-md-6">
+              <div className="card shadow p-4">
+                <h3 className="text-center mb-4">Login Page</h3>
+                <Form>
+                  <Form.Group className="mb-3" controlId="userIDInput">
+                    <Form.Label>userID</Form.Label>
+                    <Form.Control ref={userIDref} placeholder="Enter your user ID" />
+                  </Form.Group>
+      
+                  <Form.Group className="mb-3" controlId="passwordInput">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control
+                      type="password"
+                      ref={passwordRef}
+                      placeholder="Enter your password"
+                    />
+                  </Form.Group>
+      
+                  <div className="d-grid">
+                    <Button variant="primary" onClick={() => handleLogIn()}>
+                      Log In
+                    </Button>
+                  </div>
+                </Form>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+      
 }
 
 export default Login;

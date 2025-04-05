@@ -49,20 +49,48 @@ function Register() {
         })
     }
 
-    return <>
-        <h3>Register your account!</h3>
-
-        <Form.Label htmlFor="userID">userID</Form.Label>
-        <Form.Control id="userID" ref={userIDRef}></Form.Control>
-
-        <Form.Label htmlFor="password">Password</Form.Label>
-        <Form.Control id="password" type="password" ref={passwordRef}></Form.Control>
-
-        <Form.Label htmlFor="cPassword">Confirm Password</Form.Label>
-        <Form.Control id="cPassword" type="password" ref={cPasswordRef}></Form.Control>
-
-        <Button style={{ marginTop: 10 }} onClick={() => handleRegister()}>Register</Button>
-    </>;
+    return (
+        <div className="container mt-5">
+          <div className="row justify-content-center">
+            <div className="col-md-6">
+              <div className="card shadow p-4">
+                <h3 className="text-center mb-4">Register your account!</h3>
+                <Form>
+                  <Form.Group className="mb-3" controlId="userID">
+                    <Form.Label>userID</Form.Label>
+                    <Form.Control ref={userIDRef} placeholder="Choose a user ID" />
+                  </Form.Group>
+      
+                  <Form.Group className="mb-3" controlId="password">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control
+                      type="password"
+                      ref={passwordRef}
+                      placeholder="Enter a password"
+                    />
+                  </Form.Group>
+      
+                  <Form.Group className="mb-4" controlId="cPassword">
+                    <Form.Label>Confirm Password</Form.Label>
+                    <Form.Control
+                      type="password"
+                      ref={cPasswordRef}
+                      placeholder="Re-enter your password"
+                    />
+                  </Form.Group>
+      
+                  <div className="d-grid">
+                    <Button variant="success" onClick={() => handleRegister()}>
+                      Register
+                    </Button>
+                  </div>
+                </Form>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+      
 }
 
 export default Register;

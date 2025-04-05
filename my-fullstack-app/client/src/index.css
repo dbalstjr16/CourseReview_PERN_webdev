@@ -16,8 +16,12 @@
   }
   
   .hover-card:hover {
-    background-color: #f0f8ff; /* light blue, or any color */
-    color: #000; /* text color */
+    background-color: #f8f9fa;
+    transition: background-color 0.2s ease-in-out;
     cursor: pointer;
   }
-  
+
+  .card:hover {
+    background-color: #fdfdfd;
+    transition: background-color 0.2s ease-in-out;
+  }

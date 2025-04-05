@@ -53,41 +53,58 @@ function SearchResult(props: SearchResultProps) {
         return items;
     }
 
-    return <>
-
-        <Container fluid>
+    return (
+        <>
+          <Container fluid className="mt-4">
             <Row>
-                {paginatedList?.map((uni: UniversityData) => {
-                    const encodedUni = encodeURIComponent(uni.uname);
-                    const encodedCourse = encodeURIComponent(uni.cname);
-
-                    return (
-                        <Col key={uni.id} sm={12} md={6} lg={3}>
-                            <Link
-                                to={`/comments/${encodedUni}/${encodedCourse}`}
-                                className="text-decoration-none"
-                                style={{ color: "inherit" }}
-                            >
-                                <Card className="hover-card w-100 h-90 m-2 p-4 text-center shadow-sm">
-                                    {uni.uname} : {uni.cname}
-                                </Card>
-                            </Link>
-                        </Col>
-                    );
-                })}
+              {paginatedList?.map((uni: UniversityData) => {
+                const encodedUni = encodeURIComponent(uni.uname);
+                const encodedCourse = encodeURIComponent(uni.cname);
+      
+                return (
+                  <Col key={uni.id} sm={12} md={6} lg={4} xl={3}>
+                    <Link
+                      to={`/comments/${encodedUni}/${encodedCourse}`}
+                      className="text-decoration-none"
+                      style={{ color: "inherit" }}
+                    >
+                      <Card className="hover-card m-2 p-3 text-center shadow-sm">
+                        <Card.Body>
+                          <Card.Title className="fs-6">{uni.uname}</Card.Title>
+                          <Card.Text>{uni.cname}</Card.Text>
+                        </Card.Body>
+                      </Card>
+                    </Link>
+                  </Col>
+                );
+              })}
             </Row>
-        </Container>
-
-        <Pagination className="justify-content-center my-4">
-            <Pagination.First onClick={() => setCurrentPage(1)} disabled={currentPage === 1} />
-            <Pagination.Prev onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))} disabled={currentPage === 1} />
-
+          </Container>
+      
+          <Pagination className="justify-content-center my-4">
+            <Pagination.First
+              onClick={() => setCurrentPage(1)}
+              disabled={currentPage === 1}
+            />
+            <Pagination.Prev
+              onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+              disabled={currentPage === 1}
+            />
+      
             {renderChunkedPaginationItems()}
-
-            <Pagination.Next onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))} disabled={currentPage === totalPages} />
-            <Pagination.Last onClick={() => setCurrentPage(totalPages)} disabled={currentPage === totalPages} />
-        </Pagination>
-    </>
+      
+            <Pagination.Next
+              onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+              disabled={currentPage === totalPages}
+            />
+            <Pagination.Last
+              onClick={() => setCurrentPage(totalPages)}
+              disabled={currentPage === totalPages}
+            />
+          </Pagination>
+        </>
+      );
+      
 }
 
 export default SearchResult;
