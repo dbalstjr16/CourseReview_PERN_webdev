@@ -54,12 +54,14 @@ This project aims to create a space for students to share honest feedback about 
 
 <div style="display: flex; gap: 10px; flex-wrap: wrap;">
   <img src="./assets/About.png" alt="About" width="600"/>
+  <img src="./assets/Login.png" alt="Login" width="600"/>
+  <img src="./assets/Register.png" alt="Register" width="600"/>
+  <img src="./assets/About2.png" alt="Review" width="600"/>
   <img src="./assets/Search.png" alt="Search" width="600"/>
   <img src="./assets/Review.png" alt="Review" width="600"/>
-  <img src="./assets/About2.png" alt="Review" width="600"/>
   <img src="./assets/Review2.png" alt="Review" width="600"/>
-  <img src="./assets/Register.png" alt="Register" width="600"/>
-  <img src="./assets/Login.png" alt="Login" width="600"/>
+  
+  
 </div>
 
 ---
