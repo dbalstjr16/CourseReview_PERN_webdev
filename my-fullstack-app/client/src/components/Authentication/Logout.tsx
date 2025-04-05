@@ -34,7 +34,18 @@ function Logout() {
         })
     }, []);
     
-    return <>Logout page! will be directed to home page after an alert!</>;
+    return (
+        <div className="container mt-5">
+          <div className="row justify-content-center">
+            <div className="col-md-6">
+              <div className="card shadow p-4">
+                <h4 className="text-center mb-3">Logout Page</h4>
+                <p className="text-center">You will be redirected to the home page after an alert!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
 }
 
 export default Logout;

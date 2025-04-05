@@ -22,7 +22,7 @@ function ReviewPage() {
     const [courseId, setCourseId] = useState<number | null>(null);
     const [commentData, setCommentData] = useState<CommentData[]>([]);
 
-    const commentInput = useRef<HTMLInputElement>(null);
+    const commentInput = useRef<HTMLTextAreaElement>(null);
 
     // ----- Get CourseID -----
     useEffect(() => {
@@ -113,31 +113,52 @@ function ReviewPage() {
             .catch(error => alert(error.message));
     }
 
-    console.log(commentData);
+    return (
+  <div className="container mt-5">
+    <div className="row justify-content-center">
+      <div className="col-lg-10">
+        <div className="card shadow p-4">
+          <h3 className="text-center mb-4">
+            Welcome to {uniName} {courseName}: Review Page!
+          </h3>
 
-    return <>
-        <h3>Welcome to {uniName} {courseName}: Review Page!</h3>
+          <Form>
+            <Form.Group controlId="postcomment" className="mb-3">
+              <Form.Label>Post a Comment</Form.Label>
+              <Form.Control
+                ref={commentInput}
+                as="textarea"
+                rows={3}
+                placeholder="Share your thoughts about the course..."
+              />
+            </Form.Group>
+            <div className="d-grid d-md-flex justify-content-md-end">
+              <Button onClick={() => postComment()}>Post Comment</Button>
+            </div>
+          </Form>
 
-        <Container>
-            <Form.Label htmlFor='postcomment'>Post Comment!</Form.Label>
-            <Form.Control id='postcomment' ref={commentInput}></Form.Control>
-            <Button style={{ marginTop: 10 }} onClick={() => postComment()}>Post Comment!</Button>
-        </Container>
+          <hr className="my-4" />
 
-        {commentData.length !== 0 ?
-            <Container fluid style={{ marginTop: 25 }}>
-                <Row>
-                    {commentData?.map((comment: CommentData) =>
-                        <Col sm={12} md={6} lg={3} key={comment.id}>
-                            <ReviewMessage {...comment} deleteComment={deleteComment} />
-                        </Col>)}
-                </Row>
+          {commentData.length > 0 ? (
+            <Container fluid>
+              <Row>
+                {commentData.map((comment: CommentData) => (
+                  <Col sm={12} md={6} lg={4} xl={3} key={comment.id}>
+                    <ReviewMessage {...comment} deleteComment={deleteComment} />
+                  </Col>
+                ))}
+              </Row>
             </Container>
-            :
-            <p style={{marginTop: 30}}>No comments have been added to this course yet. Be the first to share your thoughts! 😊</p>
-        }
-
-    </>;
+          ) : (
+            <p className="text-center mt-4 text-muted">
+              No comments have been added to this course yet. Be the first to share your thoughts! 😊
+            </p>
+          )}
+        </div>
+      </div>
+    </div>
+  </div>
+);
 }
 
 export default ReviewPage;

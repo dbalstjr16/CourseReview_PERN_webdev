@@ -36,17 +36,44 @@ function SearchPage() {
     const filterdUniCourseList = universityCourseList?.filter(uData =>
         uData.uname.toLowerCase().includes(universityInput.toLowerCase()) && uData.cname.toLowerCase().includes(courseInput.toLowerCase()));
 
-    return <>
-        <h3>Search For University and Coursename</h3>
-        <Form.Label htmlFor="uniInput">University Name</Form.Label>
-        <Form.Control id="uniInput" value={universityInput} onChange={(e) => setUniversity(e.target.value)}></Form.Control>
-        <Form.Label htmlFor="courseInput">Course Name</Form.Label>
-        <Form.Control id="courseInput" value={courseInput} onChange={(e) => setCourse(e.target.value)}></Form.Control>
-
-        <h4 style={{ marginTop: 40, textAlign: 'center' }}>Search Result</h4>
-
-        <SearchResult filterdUniCourseList={filterdUniCourseList} universityInput={universityInput} courseInput={courseInput} />
-    </>;
+        return (
+            <div className="container mt-5">
+              <div className="row justify-content-center">
+                <div className="col-md-8">
+                  <div className="card shadow p-4">
+                    <h3 className="text-center mb-4">Search for University and Course</h3>
+                    <Form>
+                      <Form.Group className="mb-3" controlId="uniInput">
+                        <Form.Label>University Name</Form.Label>
+                        <Form.Control
+                          value={universityInput}
+                          onChange={(e) => setUniversity(e.target.value)}
+                          placeholder="e.g. KAIST"
+                        />
+                      </Form.Group>
+          
+                      <Form.Group className="mb-3" controlId="courseInput">
+                        <Form.Label>Course Name</Form.Label>
+                        <Form.Control
+                          value={courseInput}
+                          onChange={(e) => setCourse(e.target.value)}
+                          placeholder="e.g. CS537"
+                        />
+                      </Form.Group>
+                    </Form>
+          
+                    <h4 className="text-center mt-5">Search Result</h4>
+                    <SearchResult
+                      filterdUniCourseList={filterdUniCourseList}
+                      universityInput={universityInput}
+                      courseInput={courseInput}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+          
 }
 
 export default SearchPage;
