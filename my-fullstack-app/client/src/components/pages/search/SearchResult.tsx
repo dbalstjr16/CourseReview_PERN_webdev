@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 
 type UniversityData = {
     id: number;
-    uname: string;
-    cname: string;
+    uname: string; // university name
+    cname: string; // course name
 };
 
 type SearchResultProps = {

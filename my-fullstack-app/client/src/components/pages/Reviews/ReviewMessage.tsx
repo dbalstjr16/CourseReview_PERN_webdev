@@ -1,6 +1,6 @@
 import { Card, Button } from 'react-bootstrap';
 import { useContext } from 'react';
-import userContext from '../../context/userContext';
+import userContext from '../../../context/userContext';
 
 function ReviewMessage(props: any) {
     const { userid, content, created_at } = props;

@@ -15,8 +15,8 @@ function Login() {
     
     // ------------ Login User ------------
     function handleLogIn() {
-        const userID = userIDref.current!.value;
-        const password = passwordRef.current!.value;
+        const userID: string = userIDref.current!.value;
+        const password: string = passwordRef.current!.value;
 
         if (!userID || !password) {
             alert('Neither userID nor password should be empty!');

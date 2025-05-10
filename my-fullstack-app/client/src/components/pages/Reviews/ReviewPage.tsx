@@ -2,7 +2,7 @@ import { Container, Button, Row, Col, Form } from 'react-bootstrap';
 import ReviewMessage from './ReviewMessage';
 import { useRef, useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import userContext from '../../context/userContext';
+import userContext from '../../../context/userContext';
 
 type CommentData = {
     id: number,

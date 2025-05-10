@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { Container, Row, Col, Card } from 'react-bootstrap';
-import userContext from '../context/userContext';
+import userContext from '../../context/userContext';
 
 function AboutPage() {
   const [loginStatus, _, userID, __] = useContext(userContext)!;

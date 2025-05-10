@@ -1,11 +1,11 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import AboutPage from '../components/AboutPage';
+import AboutPage from '../components/pages/AboutPage';
 import Layout from './Layout';
 import Login from '../components/Authentication/Login';
 import Register from '../components/Authentication/Register';
 import Logout from '../components/Authentication/Logout';
-import SearchPage from '../components/SearchPage';
-import ReviewPage from '../components/Reviews/ReviewPage';
+import SearchPage from '../components/pages/search/SearchPage';
+import ReviewPage from '../components/pages/Reviews/ReviewPage';
 
 function Routers() {
 

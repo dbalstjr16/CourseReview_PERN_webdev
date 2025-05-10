@@ -48,16 +48,14 @@ This project aims to create a space for students to share honest feedback about 
 
 ---
 
-## 🖼️ Screenshots
+## 🖼️ Screenshots (Examples)
 
 <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-  <img src="./assets/About.png" alt="About" width="300"/>
-  <img src="./assets/Search.png" alt="Search" width="300"/>
-  <img src="./assets/Review.png" alt="Review" width="300"/>
-  <img src="./assets/About2.png" alt="Review" width="300"/>
-  <img src="./assets/Review2.png" alt="Review" width="300"/>
-  <img src="./assets/Register.png" alt="Register" width="300"/>
-  <img src="./assets/Login.png" alt="Login" width="300"/>
+  <img src="./assets/1.png" alt="About" width="1500"/>
+  <img src="./assets/2.png" alt="Search" width="1500"/>
+  <img src="./assets/3.png" alt="Review" width="1500"/>
+  <img src="./assets/4.png" alt="Review" width="1500"/>
+  <img src="./assets/5.png" alt="Review" width="1500"/>
 </div>
 
 ---
